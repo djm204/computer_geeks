@@ -14,4 +14,15 @@ ActiveAdmin.register Address do
   #  permitted
   # end
   
+   form do |f|
+    f.inputs "New Address Details" do
+      f.input :user_id, as: :select, collection: User.all()
+      f.input :address
+      f.input :city
+      f.input :country, as: :select, collection: country_dropdown
+      f.input :postal_code
+      f.input :province_id, as: :select, collection: Province.all()
+    end
+    f.actions
+  end
 end

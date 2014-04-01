@@ -47,3 +47,5 @@ end
  gem 'activeadmin', github: 'gregbell/active_admin'
 
  gem 'country-select'
+
+ gem "haml-rails"

@@ -1,4 +1,6 @@
 ComputerGeeks::Application.routes.draw do
+  resources :addresses
+
   resources :watcheditems
 
   resources :users

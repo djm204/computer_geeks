@@ -1,5 +1,7 @@
 ComputerGeeks::Application.routes.draw do
-  get "index/index"
+
+  root 'index#index'
+  
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :provinces

@@ -1,4 +1,6 @@
 ComputerGeeks::Application.routes.draw do
+  resources :lineitems
+
   resources :categories
 
   resources :products

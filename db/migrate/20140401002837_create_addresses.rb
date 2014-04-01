@@ -6,7 +6,7 @@ class CreateAddresses < ActiveRecord::Migration
       t.string     :country
       t.string     :postal_code
       t.references :province
-      t.references :users
+      t.references :user
 
       t.timestamps
     end

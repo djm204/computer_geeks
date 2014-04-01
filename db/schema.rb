@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20140401004657) do
     t.string   "country"
     t.string   "postal_code"
     t.integer  "province_id"
-    t.integer  "users_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

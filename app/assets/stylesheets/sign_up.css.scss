@@ -1,0 +1,51 @@
+h2
+{
+	margin-top:10px;
+	text-align: center;
+}
+
+#error_explanation
+{
+	margin: 0px auto;
+	margin-bottom:10px;
+
+	ul
+	{
+		margin-left: 10px;
+	}
+}
+
+.sign_up
+{
+	margin: 0px auto;
+	list-style: none;
+	width:500px;
+
+	li
+	{		
+		margin:0px auto;
+		display: inline-block;
+		width:400px;
+
+		.label
+		{
+			width:10px;
+		}
+		.input
+		{
+			float:right;
+			width:200px;	
+		}
+	}	
+}
+
+.submit
+{
+	margin-top:10px;
+	float:right;
+}
+
+
+
+
+

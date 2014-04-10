@@ -49,3 +49,5 @@ end
  gem 'country-select'
 
  gem "haml-rails"
+
+ gem 'devise'

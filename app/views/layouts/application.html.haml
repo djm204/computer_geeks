@@ -11,11 +11,16 @@
     - if alert
       %p.alert.alert-danger= alert
     %header{id: 'head'}
-      %h2 Computer Geeks
-      -	if user_signed_in?
-        %p{class: 'signed_in_welcome'}= 'Welcome Back, ' + current_user.name
-        %p{class: 'login'}= link_to "Sign out", destroy_user_session_path, :method => :delete
-      -	else
-        %p{class: 'login'}= link_to('Login', new_user_session_path)
-    = yield
+      %nav
+        %ul
+          - [["Home", "/index"], ["Products", "/products"], ["Contact", "/contact"],["About Us", "/about"]].each do |name,url|
+            %li{class: is_active(request.original_url,url[1,url.length])}= link_to_unless_current(name, url)
+        %h2 Computer Geeks            
+        -	if user_signed_in?
+          %p{class: 'signed_in_welcome'}= 'Welcome Back, ' + current_user.name
+          %p{class: 'login'}= link_to "Sign out", destroy_user_session_path, :method => :delete
+        -	else
+          %p{class: 'login'}= link_to('Login', new_user_session_path)
+    %section#container
+      = yield
     %p footer

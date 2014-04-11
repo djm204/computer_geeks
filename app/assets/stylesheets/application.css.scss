@@ -11,47 +11,99 @@
  *= require_self
  *= require_tree .
  */
+ 
 #body
 {
-	margin:25px auto;
-	width:900px;
-	background-image:url('background.jpg');
+	margin:-10px auto;
+	background-color: #E8EEEF;
 	color:#FFF;
 
 	a
 	{
-		color:#FFF;
+		text-decoration: none;
+	}
+
+	a:hover
+	{
+		background: none;
 	}
 
 	#head
 	{
-		width:900px;
-		border: 1px solid #000;
-		border-radius: 75px 0px 0px 0px;
-		background-color:#0066FF;
+		margin:0px auto;
+		height:200px;
 		color:#FFF;
+		background: -webkit-gradient(linear,left top,left bottom,	color-stop(0, #EBF7F6),	color-stop(1, #CBD8DA));
+		background: -o-linear-gradient(bottom, #EBF7F6 0%, #CBD8DA 100%);
+		background: -moz-linear-gradient(bottom, #EBF7F6 0%, #CBD8DA 100%);
+		background: -webkit-linear-gradient(bottom, #EBF7F6 0%, #CBD8DA 100%);
+		background: -ms-linear-gradient(bottom, #EBF7F6 0%, #CBD8DA 100%);
+		background: linear-gradient(to bottom, #EBF7F6 0%, #CBD8DA 100%);
 
-		h2
+		nav
 		{
-			font-size:30px;
-			margin-top:15px;
-			color:#FFF;
-		}
+			margin:10px auto;
+			border-top: 5px solid #1594DD;
+			width:900px;
 
-		.login
-		{
-			float:right;
-			margin-top:-20px;
-			margin-right:5px;
-			clear:both;
-		}
-		.signed_in_welcome
-		{
+			ul
+			{
+				margin-left: 275px;
+				list-style: none;
+				color:#000;
 
-			float:right;
-			margin-top:-35px;
-			margin-right:5px;
+				li
+				{
+					padding-top:10px;
+					height:25px;
+					display:inline-block;
+					padding-left:10px;
+					padding-right:10px;
+					font-size:14px;
+
+					a:hover
+					{
+						color:#1594DD;
+						cursor: pointer; 
+						cursor: hand;
+					}
+				}
+				.active
+				{
+					background-color:#1594DD;
+					border-radius:20px 20px 5px 5px; 
+				}
+			}
+
+			h2
+			{
+				text-align: left;
+				padding-top:20px;
+				font-size:25px;
+				color:#000;
+			}
+
+			.login
+			{
+				float:right;
+				margin-top:-10px;
+				margin-right:5px;
+				clear:both;
+			}
+			.signed_in_welcome
+			{
+
+				float:right;
+				margin-top:-35px;
+				margin-right:5px;
+			}
 		}
+	}
+	#container
+	{
+		margin:0px auto;
+		width:900px;
+		color: #000;
 	}
 	.alert alert-success
 	{

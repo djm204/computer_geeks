@@ -1,5 +1,9 @@
 ComputerGeeks::Application.routes.draw do
 
+  resources :contacts
+
+  resources :abouts
+
   devise_for :users
   root 'index#index'
   

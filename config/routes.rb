@@ -1,29 +1,26 @@
 ComputerGeeks::Application.routes.draw do
 
-  resources :contacts
-
-  resources :abouts
-
   devise_for :users
   root 'index#index'
+
+  get '/products/', to: 'products#index'
+  get '/contact'  , to: 'contacts#index'
+  get '/about'    , to: 'abouts#index'
+
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  resources :provinces
+  #resources :provinces
+  #resources :addresses
+  #resources :watcheditems
+  #resources :users
+  #resources :orders
+  #resources :lineitems
+  #resources :categories
+  #resources :products
+  #resources :contacts
+  #resources :abouts
 
-  resources :addresses
-
-  resources :watcheditems
-
-  resources :users
-
-  resources :orders
-
-  resources :lineitems
-
-  resources :categories
-
-  resources :products
   get '*unmatched_route', :to => 'index#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

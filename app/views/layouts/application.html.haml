@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %title Computer Geeks
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body{id: "body"}
+    - if notice
+      %p.alert.alert-success= notice
+    - if alert
+      %p.alert.alert-danger= alert
+    %header{id: 'head'}
+      %h2 Computer Geeks
+      -	if user_signed_in?
+        %p{class: 'signed_in_welcome'}= 'Welcome Back, ' + current_user.name
+        %p{class: 'login'}= link_to "Sign out", destroy_user_session_path, :method => :delete
+      -	else
+        %p{class: 'login'}= link_to('Login', new_user_session_path)
+    = yield
+    %p footer

@@ -11,3 +11,45 @@
  *= require_self
  *= require_tree .
  */
+#body
+{
+	margin:25px auto;
+	width:900px;
+	background-image:url('background.jpg');
+	color:#FFF;
+
+	#head
+	{
+		width:900px;
+		border: 1px solid #000;
+		border-radius: 75px 0px 0px 0px;
+		background-color:#0066FF;
+		color:#FFF;
+
+		h2
+		{
+			font-size:30px;
+			margin-top:15px;
+			color:#FFF;
+		}
+
+		.login
+		{
+			float:right;
+			margin-top:-20px;
+			margin-right:5px;
+			clear:both;
+		}
+		.signed_in_welcome
+		{
+
+			float:right;
+			margin-top:-35px;
+			margin-right:5px;
+		}
+	}
+	.alert alert-success
+	{
+
+	}
+}

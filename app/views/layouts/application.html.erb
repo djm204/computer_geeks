@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RailsStore</title>
+  <title>Computer Geeks</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -13,7 +13,9 @@
 <% if alert %>
   <p class="alert alert-danger"><%= alert %></p>
 <% end %>
-<%= yield %>
+<p>header</p>
+	<%= yield %>
+<p>footer</p>
 
 </body>
 </html>

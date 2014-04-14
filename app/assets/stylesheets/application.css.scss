@@ -89,10 +89,17 @@
 				margin-top:-10px;
 				margin-right:5px;
 				clear:both;
+
+				a:hover
+				{
+					color:#1594DD;
+					cursor: pointer; 
+					cursor: hand;
+				}
 			}
 			.signed_in_welcome
 			{
-
+				color:#000;
 				float:right;
 				margin-top:-35px;
 				margin-right:5px;
@@ -105,8 +112,14 @@
 		width:900px;
 		color: #000;
 	}
-	.alert alert-success
+	.alert
 	{
-
+		margin-top:75px;
+		text-align: center;
+		color:#000;
+	}
+	.alert-danger
+	{
+		color:#FF0000;
 	}
 }

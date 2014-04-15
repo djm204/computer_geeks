@@ -16,13 +16,15 @@
     %br/
     = f.text_field :last_name
   .field
-    = f.label :default_ship
+    = f.label :default_ship, 'Default Shipping Address'
     %br/
-    = f.number_field :default_ship
+    - address_array = User.find(current_user.id).addresses { |address| [address.id, address.address] }
+    = f.select(:default_ship, address_array)
   .field
-    = f.label :default_bill
+    = f.label :default_bill, 'Default Billing Address'
     %br/
-    = f.number_field :default_bill
+    - address_array = User.find(current_user.id).addresses { |address| [address.id, address.address] }
+    = f.select(:default_bill, address_array)
   .field
     = f.label :email
     %br/

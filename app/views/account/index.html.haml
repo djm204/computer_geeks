@@ -16,5 +16,5 @@
   %h4 User Information
   %section.my_account
     %ul
-      %li= link_to('Edit Billing/Shipping Addresses', '/addresses/' + current_user.id.to_s + '/edit')
+      %li= link_to('Edit Billing/Shipping Addresses', '/addresses')
       %li= link_to('Edit Name/Email/Password'       , '/users/'     + current_user.id.to_s + '/edit')

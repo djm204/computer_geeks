@@ -1,0 +1,25 @@
+%h1 My addresses
+%table
+  %thead
+    %tr
+      %th Address
+      %th City
+      %th Country
+      %th Postal code
+      %th
+      %th
+      %th
+  %tbody
+    - @addresses.each do |address|
+      %tr
+        %td= address.address
+        %td= address.city
+        %td= address.country
+        %td= address.postal_code
+        -#%td= link_to 'Show', address
+        %td= link_to 'Edit', edit_address_path(address)
+        %td= link_to 'Delete', address, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'Back'       , account_path 
+|
+= link_to 'New Address', new_address_path 

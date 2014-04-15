@@ -5,7 +5,8 @@ class AddressesController < ApplicationController
   # GET /addresses
   # GET /addresses.json
   def index
-    @addresses = Address.all
+    user = User.find(current_user.id)
+    @addresses = user.addresses.all()
   end
 
   # GET /addresses/1
@@ -20,6 +21,7 @@ class AddressesController < ApplicationController
 
   # GET /addresses/1/edit
   def edit
+    @address = Address.find(params[:id])
   end
 
   # POST /addresses
@@ -29,7 +31,7 @@ class AddressesController < ApplicationController
 
     respond_to do |format|
       if @address.save
-        format.html { redirect_to @address, notice: 'Address was successfully created.' }
+        format.html { redirect_to addresses_url, notice: 'Address was successfully created.' }
         format.json { render action: 'show', status: :created, location: @address }
       else
         format.html { render action: 'new' }
@@ -43,7 +45,7 @@ class AddressesController < ApplicationController
   def update
     respond_to do |format|
       if @address.update(address_params)
-        format.html { redirect_to @address, notice: 'Address was successfully updated.' }
+        format.html { redirect_to addresses_url, notice: 'Address was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -70,6 +72,6 @@ class AddressesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def address_params
-      params.require(:address).permit(:address, :city, :country, :postal_code)
+      params.require(:address).permit(:user_id,:address, :city, :country, :province_id, :postal_code)
     end
 end

@@ -71,8 +71,13 @@
 				.active
 				{
 					background-color:#1594DD;
+					color:#FFF;
 					border-radius:20px 20px 10px 10px; 
 				}
+				.nav_right
+				{
+					float:right;
+				}				
 			}
 
 			h2
@@ -108,7 +113,7 @@
 	}
 	#container
 	{
-		margin:0px auto;
+		margin:15px auto;
 		width:900px;
 		color: #000;
 	}

@@ -1,3 +1,39 @@
 // Place all the styles related to the account controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.my_account
+{
+	background-color: #F8F8F9;
+  border: 1px solid #D0C3AD;
+
+  padding-left:10px;
+  padding-right:10px;
+  padding-top:10px;
+  padding-bottom:5px;
+
+  ul
+  {
+  	list-style: none;
+
+  	li
+  	{
+  		padding-top:5px;
+  		padding-bottom:5px;
+  	}
+  }
+}
+
+.orders
+{
+	tr:nth-child(2n)
+  {
+	  background-color: #E1E1E1;
+  }
+
+  tr:hover
+  {
+  	background-color: #94C5EB;
+  	color:#FFF;
+  }
+}

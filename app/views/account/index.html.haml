@@ -1,10 +1,20 @@
-%h2 My Account Information
-%section#orders
+%h2 My Account
+%section
   %h4 Recent Orders
-  %table
-    - if get_Orders.is_a?(Array)
-      - get_Orders.each do |order|
-        %tr
-          %td= order.id
-    - else
-      %div= get_Orders
+  %table.orders.my_account
+    %tr
+      %th Order ID
+      %th Order Status
+      %th Order Date
+      %th Amount
+    - get_Orders.each do |order|
+      %tr
+        %td= order.id
+        %td= order.status
+        %td= order.created_at.to_s[0,10]
+        %td= get_Order_Amount(order.id)
+  %h4 User Information
+  %section.my_account
+    %ul
+      %li= link_to('Edit Billing/Shipping Addresses', '/addresses/' + current_user.id.to_s + '/edit')
+      %li= link_to('Edit Name/Email/Password'       , '/users/'     + current_user.id.to_s + '/edit')

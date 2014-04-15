@@ -5,20 +5,21 @@ ComputerGeeks::Application.routes.draw do
 
   get "/" => redirect("/index")
 
-  get '/index', to: 'index#index'
-
-  get '/products/', to: 'products#index'
-  get '/contact'  , to: 'contacts#index'
-  get '/about'    , to: 'abouts#index'
-  get '/account'  , to: 'account#index'
-
+  get   '/index'              , to: 'index#index'
+  get   '/products/'          , to: 'products#index' , as: :product
+  get   '/contact'            , to: 'contacts#index'
+  get   '/about'              , to: 'abouts#index'
+  get   '/account'            , to: 'account#index'
+  get   '/users/:id/edit'     , to: 'users#edit'     , as: :user
+  patch '/users/:id/edit'     , to: 'users#update'
+  get   '/addresses/:id/edit' , to: 'addresses#edit' , as: :address
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   #resources :provinces
   #resources :addresses
   #resources :watcheditems
-  resources :users
+  #resources :users
   #resources :orders
   #resources :lineitems
   #resources :categories

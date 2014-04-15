@@ -26,6 +26,9 @@
 	a:hover
 	{
 		background: none;
+	  color:#1594DD;
+	  cursor: pointer; 
+		cursor: hand
 	}
 
 	#head
@@ -60,13 +63,6 @@
 					padding-left:10px;
 					padding-right:10px;
 					font-size:14px;
-
-					a:hover
-					{
-						color:#1594DD;
-						cursor: pointer; 
-						cursor: hand;
-					}
 				}
 				.active
 				{
@@ -131,5 +127,9 @@
 	.alert-danger
 	{
 		color:#FF0000;
+	}
+	footer
+	{
+		clear:both;
 	}
 }

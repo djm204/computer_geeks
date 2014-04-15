@@ -1,2 +1,10 @@
-%section
-	%h2 My Account Information
+%h2 My Account Information
+%section#orders
+  %h4 Recent Orders
+  %table
+    - if get_Orders.is_a?(Array)
+      - get_Orders.each do |order|
+        %tr
+          %td= order.id
+    - else
+      %div= get_Orders

@@ -10,7 +10,7 @@ ComputerGeeks::Application.routes.draw do
   get '/products/', to: 'products#index'
   get '/contact'  , to: 'contacts#index'
   get '/about'    , to: 'abouts#index'
-  get '/account' , to: 'account#index'
+  get '/account'  , to: 'account#index'
 
   
   devise_for :admin_users, ActiveAdmin::Devise.config

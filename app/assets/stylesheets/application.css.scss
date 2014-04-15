@@ -77,7 +77,7 @@
 				.nav_right
 				{
 					float:right;
-				}				
+				}		
 			}
 
 			h2
@@ -116,6 +116,11 @@
 		margin:15px auto;
 		width:900px;
 		color: #000;
+
+		h4
+		{
+			font-weight: bold;
+		}
 	}
 	.alert
 	{

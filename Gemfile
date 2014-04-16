@@ -53,3 +53,5 @@ end
  gem 'devise'
 
  gem 'carrierwave'
+
+ gem 'rubocop'

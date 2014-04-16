@@ -10,6 +10,7 @@ ComputerGeeks::Application.routes.draw do
   get   '/contact'                   , to: 'contacts#index'
   get   '/about'                     , to: 'abouts#index'
   get   '/account'                   , to: 'account#index'
+  get   '/cart'                      , to: 'orders#cart'
   get   '/users/:id/edit'            , to: 'users#edit'           , as: :user
   patch '/users/:id/edit'            , to: 'users#update'
   get   '/users/:id/change_password' , to: 'users#change_password'

@@ -132,4 +132,16 @@
 	{
 		clear:both;
 	}
+
+	.nav_footer
+	{
+		margin-top:50px;
+		list-style: none;
+		text-align: center;
+
+		li
+		{
+			display: inline-block;
+		}
+	}
 }

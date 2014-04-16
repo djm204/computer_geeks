@@ -14,7 +14,10 @@
 ActiveRecord::Schema.define(version: 20140411211202) do
 
   create_table "abouts", force: true do |t|
-    t.string   "index"
+    t.string   "page_title"
+    t.text     "page_left_description"
+    t.text     "page_right_description"
+    t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -70,7 +73,10 @@ ActiveRecord::Schema.define(version: 20140411211202) do
   end
 
   create_table "contacts", force: true do |t|
-    t.string   "index"
+    t.string   "page_title"
+    t.text     "page_left_description"
+    t.text     "page_right_description"
+    t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -99,10 +105,10 @@ ActiveRecord::Schema.define(version: 20140411211202) do
     t.text     "description"
     t.decimal  "price"
     t.integer  "stock_quantity"
+    t.string   "productImage"
     t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "productImage"
   end
 
   create_table "provinces", force: true do |t|

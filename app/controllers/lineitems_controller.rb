@@ -1,3 +1,5 @@
+# encoding: UTF-8
+#
 class LineitemsController < ApplicationController
   before_action :set_lineitem, only: [:show, :edit, :update, :destroy]
 
@@ -62,13 +64,14 @@ class LineitemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_lineitem
-      @lineitem = Lineitem.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def lineitem_params
-      params.require(:lineitem).permit(:quantity, :price)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_lineitem
+    @lineitem = Lineitem.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def lineitem_params
+    params.require(:lineitem).permit(:quantity, :price)
+  end
 end

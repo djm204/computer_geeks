@@ -9,13 +9,13 @@
     %header#head
       %nav
         %ul
-          - get_Nav_Items.each do |name,url|
+          - nav_items.each do |name,url|
             - if name == "Cart"
-              %li.nav_right{class: is_active(request.original_url,url[1,url.length], 'active')}= link_to_unless_current(name, url)
+              %li.nav_right{class: active?(request.original_url,url[1,url.length], 'active')}= link_to_unless_current(name, url)
             - elsif user_signed_in? && name == "My Account"
-              %li.nav_right{class: is_active(request.original_url,url[1,url.length],'active')}= link_to_unless_current(name, url)
+              %li.nav_right{class: active?(request.original_url,url[1,url.length],'active')}= link_to_unless_current(name, url)
             - elsif name != "My Account"
-              %li{class: is_active(request.original_url,url[1,url.length], 'active')}= link_to_unless_current(name, url)
+              %li{class: active?(request.original_url,url[1,url.length], 'active')}= link_to_unless_current(name, url)
         %h2 Computer Geeks            
         -	if user_signed_in?
           %div.signed_in_welcome= 'Welcome Back, ' + current_user.name

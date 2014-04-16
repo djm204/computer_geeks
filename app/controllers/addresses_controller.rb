@@ -1,3 +1,5 @@
+# encoding: UTF-8
+#
 class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
@@ -6,7 +8,7 @@ class AddressesController < ApplicationController
   # GET /addresses.json
   def index
     user = User.find(current_user.id)
-    @addresses = user.addresses.all()
+    @addresses = user.addresses.all
   end
 
   # GET /addresses/1
@@ -65,13 +67,14 @@ class AddressesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_address
-      @address = Address.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def address_params
-      params.require(:address).permit(:user_id,:address, :city, :country, :province_id, :postal_code)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_address
+    @address = Address.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def address_params
+    params.require(:address).permit(:user_id, :address, :city, :country, :province_id, :postal_code)
+  end
 end

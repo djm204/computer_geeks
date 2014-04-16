@@ -1,3 +1,5 @@
+# encoding: UTF-8
+#
 class WatcheditemsController < ApplicationController
   before_action :set_watcheditem, only: [:show, :edit, :update, :destroy]
 
@@ -62,13 +64,14 @@ class WatcheditemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_watcheditem
-      @watcheditem = Watcheditem.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def watcheditem_params
-      params[:watcheditem]
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_watcheditem
+    @watcheditem = Watcheditem.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def watcheditem_params
+    params[:watcheditem]
+  end
 end

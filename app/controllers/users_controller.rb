@@ -1,3 +1,5 @@
+# encoding: UTF-8
+#
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
@@ -11,7 +13,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    #@user = User.find(params[:id])
+    # @user = User.find(params[:id])
     @user = User.find(current_user.id)
   end
 
@@ -22,7 +24,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    #@user = User.find(params[:id])
+    # @user = User.find(params[:id])
     @user = User.find(current_user.id)
   end
 
@@ -54,7 +56,7 @@ class UsersController < ApplicationController
         format.html { redirect_to account_path, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit'}
+        format.html { render action: 'edit' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -69,33 +71,33 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def update_password
     @user = User.find(current_user.id)
     @user.updating_password = true
 
     respond_to do |format|
       if @user.update(user_params)
-        sign_in @user, :bypass => true
+        sign_in @user, bypass: true
         format.html { redirect_to account_path, notice: 'Password was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'change_password'}
+        format.html { render action: 'change_password' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-      #@user = User.find(current_user.id)      
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:first_name, :last_name, :password, :password_confirmation, :default_ship, :default_bill, :email, :email_confirmation, :active)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :password, :password_confirmation,
+                                 :default_ship, :default_bill, :email, :email_confirmation, :active)
+  end
 end

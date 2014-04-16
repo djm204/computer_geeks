@@ -1,3 +1,5 @@
+# encoding: UTF-8
+#
 ActiveAdmin.register AdminUser do
   permit_params :email, :password, :password_confirmation
 
@@ -17,7 +19,7 @@ ActiveAdmin.register AdminUser do
   filter :created_at
 
   form do |f|
-    f.inputs "Admin Details" do
+    f.inputs 'Admin Details' do
       f.input :email
       f.input :password
       f.input :password_confirmation

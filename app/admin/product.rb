@@ -1,6 +1,7 @@
+# encoding: UTF-8
+#
 ActiveAdmin.register Product do
 
-  
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -13,10 +14,9 @@ ActiveAdmin.register Product do
   #  permitted << :other if resource.something?
   #  permitted
   # end
-  
 
   form do |f|
-    f.inputs "New Product Details" do
+    f.inputs 'New Product Details' do
       f.input :category
       f.input :name
       f.input :description
@@ -25,5 +25,5 @@ ActiveAdmin.register Product do
       f.input :productImage
     end
     f.actions
-  end  
+  end
 end

@@ -1,10 +1,12 @@
+# encoding: UTF-8
+#
 class ProvincesController < ApplicationController
   before_action :set_province, only: [:show, :edit, :update, :destroy]
 
   # GET /provinces
   # GET /provinces.json
   def index
-    @provinces = Province.all()
+    @provinces = Province.all
   end
 
   # GET /provinces/1
@@ -62,13 +64,14 @@ class ProvincesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_province
-      @province = Province.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def province_params
-      params.require(:province).permit(:name, :pst_rate, :gst_rate, :hst_rate)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_province
+    @province = Province.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def province_params
+    params.require(:province).permit(:name, :pst_rate, :gst_rate, :hst_rate)
+  end
 end

@@ -7,12 +7,12 @@
       %th Order Status
       %th Order Date
       %th Amount
-    - get_Orders.each do |order|
+    - orders.each do |order|
       %tr
         %td= order.id
         %td= order.status
         %td= order.created_at.to_s[0,10]
-        %td= get_Order_Amount(order.id)
+        %td= order_amount(order.id)
   %h4 User Information
   %section.my_account
     %ul

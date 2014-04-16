@@ -1,7 +1,9 @@
+# encoding: UTF-8
+#
 ActiveAdmin.register Province do
 
-  config.sort_order = "name_asc"
-  
+  config.sort_order = 'name_asc'
+
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -14,5 +16,4 @@ ActiveAdmin.register Province do
   #  permitted << :other if resource.something?
   #  permitted
   # end
-  
 end

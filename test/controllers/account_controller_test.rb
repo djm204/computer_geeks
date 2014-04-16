@@ -1,5 +1,6 @@
+# encoding: UTF-8
 require 'test_helper'
-
+#
 class AccountControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true

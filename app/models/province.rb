@@ -1,7 +1,9 @@
+# encoding: UTF-8
+#
 class Province < ActiveRecord::Base
-	has_many :addresses
+  has_many :addresses
 
-	def to_s
-		name
-	end
+  def to_s
+    name
+  end
 end

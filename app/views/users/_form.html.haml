@@ -18,13 +18,11 @@
   .field
     = f.label :default_ship, 'Default Shipping Address'
     %br/
-    - address_array = User.find(current_user.id).addresses { |address| [address.id, address.address] }
-    = f.select(:default_ship, address_array)
+    = f.select(:default_ship, options_from_collection_for_select(@user.addresses, "id", "address", @user.default_ship))
   .field
     = f.label :default_bill, 'Default Billing Address'
     %br/
-    - address_array = User.find(current_user.id).addresses { |address| [address.id, address.address] }
-    = f.select(:default_bill, address_array)
+    = f.select(:default_bill, options_from_collection_for_select(@user.addresses, "id", "address", @user.default_bill))
   .field
     = f.label :email
     %br/

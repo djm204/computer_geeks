@@ -5,4 +5,8 @@ class Address < ActiveRecord::Base
 	def to_s
 		id.to_s + " - " + address
 	end
+
+	def name
+		address
+	end
 end

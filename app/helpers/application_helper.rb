@@ -8,7 +8,7 @@ module ApplicationHelper
     						["Products", "/products"]  , 
     						["Contact", "/contact"]    ,
     						["About Us", "/about"]     ,
-    						["My Account", "/account"] ,
+    						["My Account", account_path] ,
     						["Cart", "/cart"]]
   end
 end

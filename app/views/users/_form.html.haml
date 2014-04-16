@@ -32,14 +32,6 @@
   .field
     = f.label :email_confirmation
     %br/
-    = f.text_field :email_confirmation
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation
+    = f.text_field :email_confirmation, value: @user.email
   .actions
     = f.submit

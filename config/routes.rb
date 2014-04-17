@@ -21,6 +21,7 @@ ComputerGeeks::Application.routes.draw do
 
   get   '/search'                    , to: 'store#search'         , as: 'search'
   get   '/search_results'            , to: 'store#search_results' , as: 'search_results'
+  
   #get   '/addresses'           , to: 'addresses#index'
   #get   '/addresses/:id/edit'  , to: 'addresses#edit'       , as: :address
   #patch '/addresses/:id/edit'  , to: 'addresses#update'

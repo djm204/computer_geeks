@@ -1,5 +1,7 @@
 ComputerGeeks::Application.routes.draw do
 
+  get "store/search"
+  get "store/search_results"
   devise_for :users
   #root 'index#index'
 

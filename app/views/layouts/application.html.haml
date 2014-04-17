@@ -29,10 +29,11 @@
             = link_to('Sign Up', new_user_registration_path)
             |
             = link_to('Login', new_user_session_path)
-        %section.search
-          %input{autofocus: ''}
-          = select_tag('',options_for_select([['Product', 1], ['Category', 2],], 1))
-          %button#search_button Search
+        %form{action: '/search', method: 'post'}
+          %section.search
+            %input{autofocus: ''}
+            = select_tag('',options_for_select([['Product', 1], ['Category', 2],], 1))
+            %button#search_button Search
         - if notice
           %div.alert.alert-success= notice
         - if alert

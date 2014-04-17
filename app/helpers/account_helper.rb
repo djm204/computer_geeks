@@ -23,8 +23,4 @@ module AccountHelper
     taxes = order_amount.to_f * (order.gst_rate + order.pst_rate  + order.hst_rate)
     currency(order_amount + taxes)
   end
-
-  def currency(amount)
-    format('$%.2f', amount)
-  end
 end

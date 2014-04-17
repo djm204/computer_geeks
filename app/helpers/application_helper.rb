@@ -13,4 +13,8 @@ module ApplicationHelper
      ['My Account', '/account'],
      ['Cart', '/cart']]
   end
+
+  def currency(amount)
+    format('$%.2f', amount)
+  end
 end

@@ -1,0 +1,13 @@
+%h1 Products
+- @products.each do |product|
+  %section.product
+    %p
+      %h4= product.name
+      %span.category= "Category: #{product.category.name}"
+    %p.description= product.description
+    %p.price= "Price: #{currency(product.price)}"
+    %p.stock_quantity
+      = "In-Stock: #{product.stock_quantity}"
+    %p.image= image_tag(product.productImage)
+    %p
+      %button Add to Cart

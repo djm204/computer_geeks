@@ -33,3 +33,8 @@ Contact.create(page_title: 'Let\'s talk', page_left_description: 'At Computer Ge
 	             Please contact us for any comments, suggestions or questions regarding Computer Geeks.
 	             For sales questions or product availability please contact any of our stores.
                <br /><br /> info@computergeeks.ca')
+
+motherboards = Category.create(name: 'Motherboards')
+
+Product.create(name: 'GA-B85M-D3H', description: 'GA-B85M-D3H w/ DualDDR3 1600, 7.1 Audio, Gigabit Lan, CrossFireX, HDMI, DVI, D-Sub',
+	             category_id: motherboards.id)

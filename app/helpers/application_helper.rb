@@ -5,15 +5,15 @@ module ApplicationHelper
     current_location.include?(url) ? css_class_name : nil
   end
 
-  def check_cart_status   
+  def check_cart_status
     if session[:cart].nil?
-      cart = 'Cart (0 Items)'
+      'Cart (0 Items)'
     else
-      cart = "Cart (#{session[:cart].count}) Items"
+      "Cart (#{session[:cart].count}) Items"
     end
   end
 
-  def nav_items    
+  def nav_items
     [['Home', '/index'],
      ['Products', '/products'],
      ['Contact', '/contact'],

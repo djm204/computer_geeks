@@ -1,1 +1,6 @@
-%h2 About Computer Geeks
+%header.about_us
+  =image_tag(@about.image, class: 'about_us_image')
+%section
+  %h2.title= @about.page_title
+  %section.page_left_description= @about.page_left_description.html_safe
+  %section.page_right_description= @about.page_right_description.html_safe

@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20140411211202) do
     t.string   "city"
     t.string   "country"
     t.string   "postal_code"
+    t.string   "phone_number"
     t.integer  "province_id"
     t.integer  "user_id"
     t.datetime "created_at"

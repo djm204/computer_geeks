@@ -1,19 +1,19 @@
-%h1 Listing contacts
-
-%table
-  %tr
-    %th Index
-    %th
-    %th
-    %th
-
-  - @contacts.each do |contact|
-    %tr
-      %td= contact.index
-      -#%td= link_to 'Show', contact
-      -#%td= link_to 'Edit', edit_contact_path(contact)
-      -#%td= link_to 'Destroy', contact, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
--#= link_to 'New Contact', new_contact_path
+%header.contact
+  = image_tag(@contact.image, class: 'contact_us_image')
+%section
+  %h2.title= @contact.page_title
+  %section.page_left_description= @contact.page_left_description.html_safe
+  %section.page_right_description
+    %h3 Store Locations
+    %h5 Main Location
+    %ul.location
+      %li= @winnipeg_address.address
+      %li= "#{@winnipeg_address.city}, #{@winnipeg_address.province.to_s}"
+      %li= @winnipeg_address.phone_number
+    %h5 Other Locations
+    %ul.location
+      - @addresses.each do |address|
+        %li= address.address
+        %li= "#{address.city}, #{address.province.to_s}"
+        %li= address.phone_number
+        %br

@@ -1,7 +1,7 @@
 # encoding: UTF-8
 #
 class Contact < ActiveRecord::Base
-  validate :there_can_only_be_one
+  validate :there_can_only_be_one, on: :create
   mount_uploader :image, ImageUploader
 
   private

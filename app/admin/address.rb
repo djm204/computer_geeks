@@ -5,7 +5,7 @@ ActiveAdmin.register Address do
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :list, :of, :attributes, :on, :model, :user_id, :address, :city, :country, :postal_code, :province_id
+  permit_params :list, :of, :attributes, :on, :model, :user_id, :address, :city, :country, :postal_code, :province_id, :phone_number
   #
   # or
   #
@@ -23,6 +23,7 @@ ActiveAdmin.register Address do
       f.input :country, as: :select, collection: country_dropdown
       f.input :postal_code
       f.input :province_id, as: :select, collection: Province.all
+      f.input :phone_number
     end
     f.actions
   end

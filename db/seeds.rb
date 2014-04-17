@@ -18,3 +18,18 @@ Province.create(name: 'Prince Edward Island'  , pst_rate:    0.09, gst_rate:    
 Province.create(name: 'Quebec'                , pst_rate: 0.09975, gst_rate:  0.05, hst_rate:    0)
 Province.create(name: 'Saskatchewan'          , pst_rate:    0.05, gst_rate:  0.05, hst_rate:    0)
 Province.create(name: 'Yukon'                 , pst_rate:       0, gst_rate:  0.05, hst_rate:    0)
+
+user = User.create(first_name: 'Computer', last_name: 'Geeks', email: 'info@computergeeks.ca', email_confirmation: 'info@computergeeks.ca',
+            password: 'computer_geeks', password_confirmation: 'computer_geeks')
+
+Address.create(user_id: user.id, address:'160 Princess St.', city: 'Winnipeg', country: 'Canada', postal_code: 'R3Y1M2',
+	             province: Province.where("name ='Manitoba'")[0], phone_number: '204-985-2765')
+Address.create(user_id: user.id, address:'650 Whoville St.', city: 'Calgary', country: 'Canada', postal_code: 'T1X 0L3',
+	             province: Province.where("name ='Alberta'")[0], phone_number: '780-925-2368')
+Address.create(user_id: user.id, address:'10 Salter St.', city: 'Cole Harbour', country: 'Canada', postal_code: 'B2V B2Z', 
+	             province: Province.where("name ='Nova Scotia'")[0], phone_number: '902-585-0651')
+
+Contact.create(page_title: 'Let\'s talk', page_left_description: 'At Computer Geeks we value your comments and suggestions.
+	             Please contact us for any comments, suggestions or questions regarding Computer Geeks.
+	             For sales questions or product availability please contact any of our stores.
+               <br /><br /> info@computergeeks.ca')

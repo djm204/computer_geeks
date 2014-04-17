@@ -16,7 +16,8 @@
               %li.nav_right{class: active?(request.original_url,url[1,url.length],'active')}= link_to_unless_current(name, url)
             - elsif name != "My Account"
               %li{class: active?(request.original_url,url[1,url.length], 'active')}= link_to_unless_current(name, url)
-        %h2 Computer Geeks            
+        %h2 computer geeks
+        %p your one stop shop for everything electronic
         -	if user_signed_in?
           %div.signed_in_welcome= 'Welcome Back, ' + current_user.name
           %div.login
@@ -29,8 +30,8 @@
             |
             = link_to('Login', new_user_session_path)
         %section.search
-          %input{autofocus: 'true'}
-          %button Search
+          %input{autofocus: "true"}
+          %button.search_button Search
         - if notice
           %div.alert.alert-success= notice
         - if alert

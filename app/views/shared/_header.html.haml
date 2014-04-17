@@ -1,0 +1,24 @@
+%header#head
+  %nav
+    %ul
+      - nav_items.each do |name,url|
+        - if name == "Cart"
+          %li.nav_right{class: active?(request.original_url,url[1,url.length], 'active')}= link_to_unless_current(name, url)
+        - elsif user_signed_in? && name == "My Account"
+          %li.nav_right{class: active?(request.original_url,url[1,url.length],'active')}= link_to_unless_current(name, url)
+        - elsif name != "My Account"
+          %li{class: active?(request.original_url,url[1,url.length], 'active')}= link_to_unless_current(name, url)
+    %h2 computer geeks
+    %p your one stop shop for everything electronic
+    -	if user_signed_in?
+      %div.signed_in_welcome= 'Welcome Back, ' + current_user.name
+      %div.login
+        = link_to "My Account", "account"
+        = "|"
+        = link_to "Sign out", destroy_user_session_path, :method => :delete
+    -	else
+      %div.login
+        = link_to('Sign Up', new_user_registration_path)
+        |
+        = link_to('Login', new_user_session_path)
+    = render 'shared/search'

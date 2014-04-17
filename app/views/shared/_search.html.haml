@@ -1,0 +1,5 @@
+%form{action: search_results_path, method: 'get'}
+  %section.search
+    %input{autofocus: ''}
+    = select_tag('options',options_for_select([['Product', 1], ['Category', 2],], 1))
+    %button#search_button Search

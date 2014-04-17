@@ -6,38 +6,11 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body#body
-    %header#head
-      %nav
-        %ul
-          - nav_items.each do |name,url|
-            - if name == "Cart"
-              %li.nav_right{class: active?(request.original_url,url[1,url.length], 'active')}= link_to_unless_current(name, url)
-            - elsif user_signed_in? && name == "My Account"
-              %li.nav_right{class: active?(request.original_url,url[1,url.length],'active')}= link_to_unless_current(name, url)
-            - elsif name != "My Account"
-              %li{class: active?(request.original_url,url[1,url.length], 'active')}= link_to_unless_current(name, url)
-        %h2 computer geeks
-        %p your one stop shop for everything electronic
-        -	if user_signed_in?
-          %div.signed_in_welcome= 'Welcome Back, ' + current_user.name
-          %div.login
-            = link_to "My Account", "account"
-            = "|"
-            = link_to "Sign out", destroy_user_session_path, :method => :delete
-        -	else
-          %div.login
-            = link_to('Sign Up', new_user_registration_path)
-            |
-            = link_to('Login', new_user_session_path)
-        %form{action: '/search', method: 'post'}
-          %section.search
-            %input{autofocus: ''}
-            = select_tag('',options_for_select([['Product', 1], ['Category', 2],], 1))
-            %button#search_button Search
-        - if notice
-          %div.alert.alert-success= notice
-        - if alert
-          %div.alert.alert-danger= alert
+    = render 'shared/header'
+    - if notice
+      %div.alert.alert-success= notice
+    - if alert
+      %div.alert.alert-danger= alert
     %section#container
       = yield
       %footer

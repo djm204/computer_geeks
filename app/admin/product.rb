@@ -24,7 +24,9 @@ ActiveAdmin.register Product do
       f.input :stock_quantity
       f.input :productImage, label: 'Current Filename (read only)' , as: :string, input_html: { readonly: true }
       f.input :productImage
-      f.input :remove_productImage, label: 'Remove product image?', as: :boolean, input_html: { checked: false }
+      unless f.object.productImage.to_s == ''
+        f.input :remove_productImage, label: 'Remove product image?', as: :boolean, input_html: { checked: false }
+      end
     end
     f.actions
   end

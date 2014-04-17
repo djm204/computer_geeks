@@ -1,10 +1,11 @@
 %section.product
-  %p
-    %h4= link_to(product.name, product)
-    %span.category= "Category: #{product.category.name}"
-  %p.description= product.description
-  %p.price= "Price: #{currency(product.price)}"
-  %p.stock_quantity= "In-Stock: #{product.stock_quantity}"
-  %p.image= image_tag(product.productImage)
-  %p
-    %button Add to Cart
+  %h4= link_to(product.name, product)
+  %span.category= "Category: #{product.category.name}"
+  %ul
+    %li= product.description
+    %li= "Price: #{currency(product.price)}"
+    %li= "In-Stock: #{product.stock_quantity}"
+    %li
+      %input.qty{placeholder: '0'}
+      %button Add to Cart
+    %li.image= image_tag(product.productImage)

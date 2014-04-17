@@ -5,7 +5,7 @@ ActiveAdmin.register Product do
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :list, :of, :attributes, :on, :model, :name, :description, :category_id, :price, :stock_quantity, :productImage
+  permit_params :list, :of, :attributes, :on, :model, :name, :description, :category_id, :price, :stock_quantity, :productImage, :remove_productImage
   #
   # or
   #
@@ -23,6 +23,7 @@ ActiveAdmin.register Product do
       f.input :price
       f.input :stock_quantity
       f.input :productImage
+      f.input :remove_productImage, :as => :boolean, input_html: {checked: false}
     end
     f.actions
   end

@@ -1,4 +1,4 @@
-.search_button {
+#search_button {
 	-moz-box-shadow:inset 0px -3px 7px 0px #279ed6;
 	-webkit-box-shadow:inset 0px -3px 7px 0px #279ed6;
 	box-shadow:inset 0px -3px 7px 0px #279ed6;
@@ -23,7 +23,7 @@
 	text-decoration:none;
 	text-shadow:0px 1px 0px #263666;
 }
-.search_button:hover {
+#search_button:hover {
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #0688fa), color-stop(1, #2dabf9));
 	background:-moz-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
 	background:-webkit-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
@@ -33,7 +33,7 @@
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0688fa', endColorstr='#2dabf9',GradientType=0);
 	background-color:#0688fa;
 }
-.search_button:active {
+#search_button:active {
 	position:relative;
 	top:1px;
 }

@@ -30,8 +30,8 @@
             |
             = link_to('Login', new_user_session_path)
         %section.search
-          %input{autofocus: "true"}
-          %button.search_button Search
+          %input{autofocus: ''}
+          %button#search_button Search
         - if notice
           %div.alert.alert-success= notice
         - if alert

@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
+  before_action :previous_page
 
   protected
 
@@ -19,5 +20,12 @@ class ApplicationController < ActionController::Base
     elsif params[:action] == 'create'
       devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(registration_params) }
     end
+  end
+  
+  #used to return to previous url
+  #implemented specifically for use when searching, so that when clicking 'back'
+  #from a product you return to the search page
+  def previous_page
+    session[:previous_url] = request.referer
   end
 end

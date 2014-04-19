@@ -1,5 +1,5 @@
 = render partial: 'product',            |
   object: @product,                     |
   locals: { display_admin_links: true } |
-%p
-  = link_to 'Back', products_path
+%h3.back
+  = link_to 'Back', session[:previous_url]

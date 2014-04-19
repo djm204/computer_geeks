@@ -5,7 +5,7 @@ class Product < ActiveRecord::Base
   mount_uploader :productImage, ProductImageUploader
 
   def self.keyword_search(keywords)
-    keywords = "%" + keywords + "%"
-    Product.where("name LIKE ? OR description LIKE ?", keywords, keywords)
+    keywords = '%' + keywords + '%'
+    Product.where('name LIKE ? OR description LIKE ?', keywords, keywords)
   end
 end

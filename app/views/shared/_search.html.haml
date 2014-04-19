@@ -2,4 +2,5 @@
   %section.search
     %input{id: 'search_keywords', name: 'search_keywords', autofocus: true, type: 'text'}
     = select_tag('search_mode',options_for_select([['Product', 1], ['Category', 2],], 1))
+    = select_tag('search_category', options_for_select(Category.all))
     %button#search_button Search

@@ -80,7 +80,7 @@
 			}
 			.search
 			{				
-				margin-left:332px;
+				margin-left:275px;
 				color:#000;				
 				
 				input
@@ -91,6 +91,10 @@
           font-weight: bold;
           height:10px;
           width:150px;
+				}
+				#search_category
+				{
+					display:none;
 				}
 			}
 		}

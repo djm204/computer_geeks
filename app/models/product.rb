@@ -8,8 +8,8 @@ class Product < ActiveRecord::Base
     Product.where('name LIKE ? OR description LIKE ?', keywords(keywords), keywords(keywords))
   end
 
-  def self.keyword_search_category(keywords)
-    Product.joins(:category).where('categories.name LIKE ?', keywords(keywords))
+  def self.keyword_search_category(keywords, category_name)
+    Product.joins(:category).where("categories.name ='" + category_name + "' AND (products.name LIKE ? OR description LIKE ?)", keywords(keywords), keywords(keywords))
   end
   
   private

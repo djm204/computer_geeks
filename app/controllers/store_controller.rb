@@ -7,7 +7,6 @@ class StoreController < ApplicationController
   def search_results
   	if params[:search_mode] == '1'
       @found_products = Product.keyword_search(params[:search_keywords]).page(params[:page]).per(3)
-      #@found_products = @found_products
     end
 
     if params[:search_mode] == '2'

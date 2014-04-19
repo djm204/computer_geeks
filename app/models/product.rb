@@ -11,7 +11,7 @@ class Product < ActiveRecord::Base
   def self.keyword_search_category(keywords)
     Product.joins(:category).where('categories.name LIKE ?', keywords(keywords))
   end
-
+  
   private
 
   def self.keywords(keywords)

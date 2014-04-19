@@ -1,2 +1,7 @@
-%h2 Search Results
-%p
+%h2= "Search Results for '#{ params[:search_keywords]}'" 
+- if @found_products.empty?
+  %h3 No products found!
+- else
+  = render partial: 'products/product', |
+    collection: @found_products,        |
+    locals: { show_admin_links: false } |

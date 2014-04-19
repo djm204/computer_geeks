@@ -5,5 +5,6 @@ class StoreController < ApplicationController
   end
 
   def search_results
+  	@found_products = Product.keyword_search(params[:search_keywords])
   end
 end

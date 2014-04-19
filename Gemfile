@@ -55,3 +55,5 @@ end
  gem 'carrierwave'
 
  gem 'rubocop'
+ 
+ gem 'kaminari'

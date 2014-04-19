@@ -9,12 +9,12 @@ class Product < ActiveRecord::Base
   end
 
   def self.keyword_search_category(keywords, category_name)
-    Product.joins(:category).where("categories.name ='" + category_name + "' AND (products.name LIKE ? OR description LIKE ?)", keywords(keywords), keywords(keywords))
+    Product.joins(:category).where("categories.name ='" + category_name +
+                                   "' AND (products.name LIKE ? OR description LIKE ?)",
+                                   keywords(keywords), keywords(keywords))
   end
-  
-  private
 
   def self.keywords(keywords)
-    keywords = '%' + keywords + '%'
+    '%' + keywords + '%'
   end
 end

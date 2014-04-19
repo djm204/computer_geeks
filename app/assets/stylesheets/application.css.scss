@@ -28,9 +28,8 @@
 	a:hover
 	{
 		background: none;
-	  color:#1594DD;
-	  cursor: pointer; 
-		cursor: hand
+	  color:#1594DD; 
+		cursor: hand;
 	}
 	#container
 	{
@@ -42,6 +41,18 @@
 		{
 			font-weight: bold;
 		}
+
+		.pagination
+    {  
+     width:100%;
+     text-align: center;
+     margin-top:-25px;
+    }
+    
+    .product:last-of-type
+    {
+    	margin-bottom:75px;
+    }
 	}
 	.alert
 	{

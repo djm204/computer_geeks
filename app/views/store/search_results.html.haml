@@ -2,5 +2,8 @@
 - if @found_products.empty?
   %h3 No products found!
 - else
+  = paginate @found_products
   = render partial: 'products/product', |
-    collection: @found_products         |
+           collection: @found_products
+  - if @found_products.count > 2
+    = paginate @found_products

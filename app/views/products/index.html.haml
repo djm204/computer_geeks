@@ -1,4 +1,5 @@
 %h1 Products
-= render partial: 'product',            |
-  collection: @products,                |
-  locals: { display_admin_links: true } |
+= paginate @products
+= render partial: 'product', |
+  collection: @products
+= paginate @products

@@ -59,8 +59,4 @@ class StoreController < ApplicationController
       delete_cart_session
     end
   end
-
-  def checkout
-    
-  end
 end

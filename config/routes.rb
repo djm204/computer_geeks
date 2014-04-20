@@ -7,22 +7,23 @@ ComputerGeeks::Application.routes.draw do
 
   get "/" => redirect("/index")
 
-  get   '/index'                     , to: 'index#index'
-  get   '/products'                  , to: 'products#index'       , as: 'products'
-  get   '/products/:id'              , to: 'products#show'        , as: 'product'
-  get   '/contact'                   , to: 'contacts#index'
-  get   '/about'                     , to: 'abouts#index'
-  get   '/account'                   , to: 'account#index'
-  get   '/users/:id/edit'            , to: 'users#edit'           , as: 'user'
-  patch '/users/:id/edit'            , to: 'users#update'
-  get   '/users/:id/change_password' , to: 'users#change_password'
-  patch '/users/:id/change_password' , to: 'users#update_password'
+  get    '/index'                     , to: 'index#index'
+  get    '/products'                  , to: 'products#index'         , as: 'products'
+  get    '/products/:id'              , to: 'products#show'          , as: 'product'
+  get    '/contact'                   , to: 'contacts#index'
+  get    '/about'                     , to: 'abouts#index'
+  get    '/account'                   , to: 'account#index'
+  get    '/users/:id/edit'            , to: 'users#edit'             , as: 'user'
+  patch  '/users/:id/edit'            , to: 'users#update'
+  get    '/users/:id/change_password' , to: 'users#change_password'
+  patch  '/users/:id/change_password' , to: 'users#update_password'
 
-  get   '/search'                    , to: 'store#search'         , as: 'search'
-  get   '/search_results'            , to: 'store#search_results' , as: 'search_results'
+  get    '/search'                    , to: 'store#search'           , as: 'search'
+  get    '/search_results'            , to: 'store#search_results'   , as: 'search_results'
 
-  get   '/store/cart'                , to: 'store#cart'           , as: 'cart'
-  post  '/store/cart'                , to: 'store#cart'           , as: 'add_to_cart'
+  get    '/store/cart'                , to: 'store#cart'             , as: 'cart'
+  post   '/store/cart'                , to: 'store#cart'             , as: 'add_to_cart'
+  delete '/store/cart'                , to: 'store#remove_cart_item' , as: 'remove_cart_item'
   
   #get   '/addresses'           , to: 'addresses#index'
   #get   '/addresses/:id/edit'  , to: 'addresses#edit'       , as: :address

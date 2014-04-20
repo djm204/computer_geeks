@@ -6,4 +6,12 @@
     %li= "Price: #{currency(product.price)}"
     %li= "In-Stock: #{product.stock_quantity}"
     %li
-      = render partial: partial_name, locals:{product: product}
+      = form_tag(add_to_cart_path) do
+        %input{type: 'hidden', name: 'product_id', value: product.id}
+        - if session[:cart].nil? || session[:cart][product.id.to_s].nil?
+          - id = 0
+        - else
+          - id = session[:cart][product.id.to_s]
+        %input.qty{id: 'qty', name: 'qty', value: id}
+        = render partial: partial_name, locals:{product: product}
+        %li.image= image_tag(product.productImage)

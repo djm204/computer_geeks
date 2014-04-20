@@ -15,27 +15,43 @@ class StoreController < ApplicationController
     end
   end
 
-  def cart
+  def cart #runs on 'get' cart
     if session[:cart].nil?
       @product_id = params[:product_id]
+      @qty        = params[:qty]
       if @product_id.nil? == false
-        session[:cart] = {@product_id => params[:qty].to_i}
+        session[:cart] = {@product_id => @qty.to_i}
+        load_cart
       end
     else
+      #delete
       add_to_cart
     end
   end
 
-  def add_to_cart
+  def add_to_cart # runs only on 'post'
     @product_id = params[:product_id]
-     if session[:cart][@product_id].nil? == false
-       session[:cart][@product_id] += params[:qty].to_i
-     elsif @product_id.nil? == false
-       session[:cart][@product_id] = params[:qty].to_i
+    @qty        = params[:qty]
+     if @product_id.nil? == false
+       session[:cart][@product_id] = @qty.to_i
      end
+     load_cart
   end
 
-  def delete
-    session.delete(:cart)
+  def load_cart
+    @products_in_cart = Product.where(id: session[:cart].keys).page(params[:page]).per(3)
+  end
+
+  def delete_cart_session
+    if session[:cart].count == 0
+      session.delete(:cart)
+    end    
+  end
+
+  def remove_cart_item
+    #flash[:notice] = params[:id]
+    session[:cart].delete(params[:id])
+    delete_cart_session
+    redirect_to cart_path
   end
 end

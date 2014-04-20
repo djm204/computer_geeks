@@ -1,5 +1,5 @@
 %h1 Products
 = paginate @products
 = render partial: 'shared/product',
-  collection: @products, locals:{partial_name:'product_buttons'}
+  collection: @products, locals:{partial_name:'shared/product_buttons'}
 = paginate @products

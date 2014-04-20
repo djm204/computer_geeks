@@ -4,7 +4,7 @@
 - else
   %section.search
     = paginate @found_products
-  = render partial: 'products/product', |
-           collection: @found_products
+  = render partial: 'shared/product',
+           collection: @found_products, locals:{partial_name:'shared/product_buttons'}
   - if @found_products.count > 2
     = paginate @found_products

@@ -1,6 +1,10 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+h1
+{
+  padding-top:20px;
+}
 .product
 {
 	margin:30px auto;
@@ -32,15 +36,21 @@
       .qty
       {
          width:40px;
+         margin-right:10px;
          text-align:right;
       }
+      .remove_from_cart
+      {
+        padding-left:75px;
+        padding-bottom:-25px;
+      }   
     }
   }
 
   .image
   {
   	float:right;
-    margin-top:-80px;
+    margin-top:-120px;
   }
   .category
   {

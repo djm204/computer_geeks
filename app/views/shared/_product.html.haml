@@ -14,4 +14,4 @@
           - id = session[:cart][product.id.to_s]
         %input.qty{id: 'qty', name: 'qty', value: id}
         = render partial: partial_name, locals:{product: product}
-        %li.image= image_tag(product.productImage)
+    %li.image= image_tag(product.productImage)

@@ -2,13 +2,104 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$bkgd_color   : #F8F8F9;
+$border_color : #D0C3AD; 
+
 .checkout
 {
 	margin-left:50px;
+	margin-right:50px;
 
   h3
   {
   	margin-top: -50px;
 	  text-align: left;
+  }
+
+  ul
+  {
+  	list-style: none;
+  	margin: 0; 
+    padding: 0;
+  }
+
+  .addresses
+  {
+  	background-color: $bkgd_color;
+    border: 2px solid $border_color;
+    height:125px;
+    padding-top:15px;
+  	
+  	ul
+  	{		
+  		li:first-child
+  		{
+  			margin-top:15px;
+  		}
+  	}
+  	.address
+  	{
+  		margin-left:50px;
+  		float:left;
+  		width:325px;
+
+  		.edit_address
+  		{
+  		  padding-left:220px;
+  		  margin-top:-50px;
+  		  width:135px;
+  		  
+  		  li:first-child
+  		  {
+  		  	padding-bottom:10px;
+  		  }
+  		}
+  	}
+  }
+  .cart_order
+  {
+  	margin-top:30px;
+     
+    table
+    {
+    	background-color: $bkgd_color;
+      border: 2px solid $border_color;
+      
+      tr:nth-child(2n+1)
+      {
+	      background-color: #E1E1E1;
+      }
+      th
+      {
+      	text-align: center;
+      }
+      td
+      {
+        text-align: center;
+      }
+    }
+  }
+  .total
+  {
+  	width:200px;
+  	float:right;
+    
+    tr
+    {
+      td
+      {
+        text-align: right;
+        padding-right:10px;
+      }
+    }
+    .grand_total
+    {
+      border-top:2px solid #000;
+    }
+  }
+  .buttons
+  {
+  	padding-top:45px;
+  	text-align: center;
   }
 }

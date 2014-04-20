@@ -6,7 +6,7 @@
           data: { confirm: 'Are you sure you want to remove all items from your cart?' }
   = paginate @products_in_cart
   = render partial: 'shared/product',
-    collection: @products_in_cart, locals:{partial_name:'cart_product'}
+    collection: @products_in_cart, locals:{partial_name:'cart_product', button_name: 'Update Quantity'}
   = paginate @products_in_cart
 - else
   %h3 There are no items in your cart!

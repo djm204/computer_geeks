@@ -57,6 +57,8 @@ class StoreController < ApplicationController
   def check_session_status
     if session[:cart].count == 0     
       delete_cart_session
+    else
+      redirect_to cart_path
     end
   end
 end

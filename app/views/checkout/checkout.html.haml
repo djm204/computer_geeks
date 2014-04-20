@@ -1,4 +1,63 @@
 %section.checkout
   %h2 Checkout
   %h3 Delivery Information
+  %section.addresses
+    %section.address.bill_to
+      %h5 Billing Address
+      - bill_address = @user.addresses.find(@user.default_bill)
+      %ul
+        %li= bill_address.address
+        %li= "#{bill_address.city}, #{bill_address.province}"
+        %li= bill_address.postal_code
+        %li= bill_address.country           
+    %section.address.ship_to
+      %h5 Shipping Address
+      - ship_address = @user.addresses.find(@user.default_ship)
+      %ul
+        %li= ship_address.address
+        %li= "#{ship_address.city}, #{ship_address.province}"
+        %li= ship_address.postal_code
+        %li= ship_address.country
+      %div.edit_address
+        %ul
+          %li= link_to 'Edit Addresses', addresses_path
+          %li= link_to 'Set Default Addresses', "/users/#{current_user.id.to_s}/edit"
+  %section.cart_order
+    %h3 Order Details
+    %table
+      %thead
+        %tr
+          %th Product Name
+          %th Product Description          
+          %th Quantity
+          %th Price
+      -  @products_in_cart.each do |product|
+        %tr
+          %td= product.name
+          %td= product.description
+          %td= session[:cart][product.id.to_s]
+          %td= currency(product.price.to_f)
+    %table.total
+      %tr
+        %td= 'Sub-total: '
+        %td= "#{currency(@subtotal)}"
+      - if @pst != 0
+        %tr
+          %td= 'PST:'
+          %td= "#{currency(@pst)}"
+      - if @gst != 0
+        %tr
+          %td= 'GST:'
+          %td= "#{currency(@gst)}"
+      - if @hst != 0
+        %tr
+          %td= 'HST:'
+          %td= "#{currency(@hst)}"
+      %tr.grand_total
+        %td= 'Grand Total'
+        %td= currency(@taxes + @subtotal)
 
+    %section.buttons
+      = form_tag(payment_path) do
+        = render partial: 'shared/buttons',
+                 locals:{button_name: 'Continue to payment' }

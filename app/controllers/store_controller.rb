@@ -43,16 +43,24 @@ class StoreController < ApplicationController
   end
 
   def delete_cart_session
-    if session[:cart].count == 0
-      session.delete(:cart)
-    end    
+     session.delete(:cart)
+     redirect_to cart_path
   end
 
   def remove_cart_item
     product = Product.find(params[:id])
     flash[:notice] = "Product #{product.name} was successfully removed from your cart!"
     session[:cart].delete(params[:id])
-    delete_cart_session
-    redirect_to cart_path
+    check_session_status
+  end
+
+  def check_session_status
+    if session[:cart].count == 0     
+      delete_cart_session
+    end
+  end
+
+  def checkout
+    
   end
 end

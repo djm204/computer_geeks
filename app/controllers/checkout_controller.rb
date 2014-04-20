@@ -32,10 +32,6 @@ class CheckoutController < ApplicationController
     @products_in_cart = Product.where(id: session[:cart].keys).page(params[:page]).per(3)
   end
 
-  def payment
-
-  end
-
   def subtotal
     products = load_cart
     subtotal = 0
@@ -60,4 +56,27 @@ class CheckoutController < ApplicationController
   def taxes
     (pst + gst + hst).to_f
   end
+
+  def payment
+    redirect_to paypal_url('http://localhost:3000')
+  end
+
+  def format(amount)
+    sprintf("%.2f",amount)
+  end
+
+  def paypal_url(return_url)
+    values = {:business => 'drewlsvern@gmail.com', :cmd => '_cart',
+              :upload => 1, :return => return_url, :invoice => '03TEST'}
+    load_cart.each_with_index do |item, index|
+      values.merge!({ "amount_#{index+1}"      => format(item.price), 
+                      "item_name_#{index+1}"   => item.name,
+                      "item_number_#{index+1}" => item.id,
+                      "quantity_#{index+1}"    => session[:cart][item.id.to_s]
+                    })
+    end
+    
+    # For test transactions use this URL
+    "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
+   end
 end

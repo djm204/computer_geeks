@@ -60,4 +60,6 @@
     %section.buttons
       = form_tag(payment_path) do
         = render partial: 'shared/buttons',
-                 locals:{button_name: 'Continue to payment' }
+                 locals:{button_name: 'Make Payment' }
+      / - checkout = Checkout.new
+      / = link_to('Make Payment', checkout.paypal_url('http://localhost:3000'), class: 'payment')

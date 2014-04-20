@@ -7,7 +7,7 @@ ComputerGeeks::Application.routes.draw do
 
   get "/" => redirect("/index")
 
-  get    '/index'                     , to: 'index#index'
+  get    '/index'                     , to: 'index#index'               , as: 'home'
   get    '/products'                  , to: 'products#index'            , as: 'products'
   get    '/products/:id'              , to: 'products#show'             , as: 'product'
   get    '/contact'                   , to: 'contacts#index'

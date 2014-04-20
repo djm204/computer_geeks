@@ -1,0 +1,6 @@
+= form_tag(add_to_cart_path) do
+  %input{type: 'hidden', name: 'product_id', value: product.id}
+  %input.qty{id: 'qty', name: 'qty', placeholder: '0'}
+  = submit_tag 'Update Qty'
+  %button 'Remove'
+  %li.image= image_tag(product.productImage)

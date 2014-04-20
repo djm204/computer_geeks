@@ -1,0 +1,9 @@
+%section.product
+  %h4= link_to(product.name, product)
+  %span.category= "Category: #{product.category.name}"
+  %ul
+    %li= product.description
+    %li= "Price: #{currency(product.price)}"
+    %li= "In-Stock: #{product.stock_quantity}"
+    %li
+      = render partial: partial_name, locals:{product: product}

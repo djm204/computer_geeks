@@ -22,7 +22,6 @@ class StoreController < ApplicationController
         session[:cart] = {@product_id => params[:qty].to_i}
       end
     else
-      #delete
       add_to_cart
     end
   end

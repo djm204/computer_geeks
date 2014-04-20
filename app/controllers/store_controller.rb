@@ -49,7 +49,8 @@ class StoreController < ApplicationController
   end
 
   def remove_cart_item
-    #flash[:notice] = params[:id]
+    product = Product.find(params[:id])
+    flash[:notice] = "Product #{product.name} was successfully removed from your cart!"
     session[:cart].delete(params[:id])
     delete_cart_session
     redirect_to cart_path

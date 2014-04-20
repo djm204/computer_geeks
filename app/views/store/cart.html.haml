@@ -1,6 +1,4 @@
 %h2 Shopping Cart
-- if flash[:notice]
-  .notice= flash[:notice]
 - if @products_in_cart.nil? == false
   = paginate @products_in_cart
   = render partial: 'shared/product',

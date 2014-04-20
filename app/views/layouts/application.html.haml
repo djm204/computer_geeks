@@ -7,11 +7,11 @@
     = csrf_meta_tags
   %body#body
     = render 'shared/header'
-    - if notice
-      %div.alert.alert-success= notice
-    - if alert
-      %div.alert.alert-danger= alert
     %section#container
+      - if notice
+        %div.alert.alert-success= notice
+      - if alert
+        %div.alert.alert-danger= alert
       = yield
       %footer
         = render 'shared/footer'

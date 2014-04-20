@@ -25,7 +25,7 @@ ComputerGeeks::Application.routes.draw do
   post   '/store/cart'                , to: 'store#cart'                , as: 'add_to_cart'
   delete '/store/cart'                , to: 'store#remove_cart_item'    , as: 'remove_cart_item'
   delete '/store/cart/cart_session'   , to: 'store#delete_cart_session' , as: 'delete_cart_session'
-  post   '/store/checkout'            , to: 'store#checkout'            , as: 'checkout'
+  post   '/store/checkout'            , to: 'checkout#checkout'         , as: 'checkout'
   
   #get   '/addresses'           , to: 'addresses#index'
   #get   '/addresses/:id/edit'  , to: 'addresses#edit'       , as: :address

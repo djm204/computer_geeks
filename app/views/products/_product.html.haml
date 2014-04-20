@@ -6,6 +6,8 @@
     %li= "Price: #{currency(product.price)}"
     %li= "In-Stock: #{product.stock_quantity}"
     %li
-      %input.qty{placeholder: '0'}
-      %button Add to Cart
+      = form_tag(add_to_cart_path) do
+        %input{type: 'hidden', name: 'product_id', value: product.id}
+        %input.qty{id: 'qty', name: 'qty', placeholder: '0'}
+        = submit_tag 'Add to Cart'
     %li.image= image_tag(product.productImage)

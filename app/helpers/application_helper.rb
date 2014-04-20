@@ -19,7 +19,7 @@ module ApplicationHelper
      ['Contact', '/contact'],
      ['About Us', '/about'],
      ['My Account', '/account'],
-     [check_cart_status, '/cart']]
+     [check_cart_status, cart_path]]
   end
 
   def currency(amount)

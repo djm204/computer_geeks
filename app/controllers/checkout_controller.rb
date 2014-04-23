@@ -75,7 +75,7 @@ class CheckoutController < ApplicationController
       end
       current_order[0]
     else
-      Order.create(status: 'pending payment', pst_rate: pst, gst_rate: gst, hst_rate: hst, session_id: session[:session_id].to_s)
+      Order.create(user_id: current_user.id, status: 'pending payment', pst_rate: pst, gst_rate: gst, hst_rate: hst, session_id: session[:session_id].to_s)
     end
   end
 

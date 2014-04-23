@@ -14,11 +14,12 @@ module ApplicationHelper
   end
 
   def nav_items
-    [['Home', '/index'],
-     ['Products', '/products'],
-     ['Contact', '/contact'],
-     ['About Us', '/about'],
-     ['My Account', '/account'],
+    [['Home', home_path],
+     ['Products', products_path],
+     ['Categories', categories_path],
+     ['Contact', contact_path],
+     ['About Us', about_path],
+     ['My Account', account_path],
      [check_cart_status, cart_path]]
   end
 

@@ -9,6 +9,7 @@ ComputerGeeks::Application.routes.draw do
 
   get    '/index'                     , to: 'index#index'               , as: 'home'
   get    '/products'                  , to: 'products#index'            , as: 'products'
+  get    '/categories'                , to: 'categories#index'          , as: 'categories'
   get    '/products/:id'              , to: 'products#show'             , as: 'product'
   get    '/contact'                   , to: 'contacts#index'
   get    '/about'                     , to: 'abouts#index'

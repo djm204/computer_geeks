@@ -21,8 +21,7 @@ class StoreController < ApplicationController
       load_cart
     else
       add_to_cart
-    end
-    flash[:notice] = session[:session_id].to_s
+    end    
   end
 
   def add_to_cart

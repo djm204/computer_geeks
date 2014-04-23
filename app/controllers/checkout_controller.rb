@@ -98,10 +98,9 @@ class CheckoutController < ApplicationController
   end
 
   def populate_order
-    order = create_order
-    flash[:notice] = order.id
+    order = create_order    
     session[:cart].each do |item|
-      Lineitem.create(order_id: order.id, product_id: item[0].to_i, 
+      Lineitem.create(order_id: order.id, product_id: item[0].to_i,
                       quantity: item[1].to_i, price: Product.find(item[0].to_i).price)
     end
     order

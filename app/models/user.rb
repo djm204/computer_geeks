@@ -6,10 +6,9 @@ class User < ActiveRecord::Base
 
   attr_accessor :updating_password
 
-  validates_presence_of :first_name
-  validates_presence_of :last_name
+  validates_presence_of :first_name, :last_name, :email_confirmation
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   validates_confirmation_of :email
-  validates_presence_of :email_confirmation
   validates_confirmation_of :password, if: :updating_password
   validates_presence_of :password_confirmation, if: :updating_password
 

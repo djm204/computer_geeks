@@ -17,6 +17,7 @@ ActiveAdmin.register Order do
   form do |f|
     f.inputs 'Order' do
       f.input :user_id, as: :select, collection: User.all
+      f.input :status
       f.input :pst_rate
       f.input :gst_rate
       f.input :hst_rate

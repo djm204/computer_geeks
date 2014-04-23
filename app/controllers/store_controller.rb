@@ -24,7 +24,6 @@ class StoreController < ApplicationController
         load_cart
       end
     else
-      #delete
       add_to_cart
     end
   end

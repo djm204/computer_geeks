@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140420235951) do
+ActiveRecord::Schema.define(version: 20140422172457) do
 
   create_table "abouts", force: true do |t|
     t.string   "page_title"
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 20140420235951) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "session_id"
   end
 
   create_table "payment_notifications", force: true do |t|

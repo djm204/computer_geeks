@@ -1,3 +1,5 @@
+# encoding: UTF-8
+#
 class CheckoutController < ApplicationController
 	before_action :authenticate_user!
 
@@ -11,8 +13,7 @@ class CheckoutController < ApplicationController
 
 	def checkout
     @user = user
-    check_address_status
-    load_cart
+    check_address_status(@user)
     @subtotal = subtotal
     @pst = pst
     @gst = gst
@@ -20,8 +21,7 @@ class CheckoutController < ApplicationController
     @taxes = taxes
 	end
 
-  def check_address_status
-    @user = user
+  def check_address_status(user)    
     if @user.default_bill.nil? || @user.default_ship.nil?
       flash[:notice] = 'You must add an address before you can continue with checkout!'
       redirect_to addresses_path
@@ -42,40 +42,76 @@ class CheckoutController < ApplicationController
   end
 
   def pst
-    bill_address.province.pst_rate * subtotal
+    bill_address.province.pst_rate
   end
 
   def gst
-    bill_address.province.gst_rate * subtotal
+    bill_address.province.gst_rate
   end
 
   def hst
-    bill_address.province.hst_rate * subtotal
+    bill_address.province.hst_rate
   end
 
   def taxes
     (pst + gst + hst).to_f
   end
 
-  def payment
-    redirect_to paypal_url('http://localhost:3000')
+  def payment    
+    redirect_to paypal_url(populate_order)
   end
 
   def format(amount)
     sprintf("%.2f",amount)
   end
 
-  def paypal_url(return_url)
-    values = {:business => 'drewlsvern@gmail.com', :cmd => '_cart',
-              :upload => 1, :return => return_url, :invoice => '03TEST'}
-    load_cart.each_with_index do |item, index|
-      values.merge!({ "amount_#{index+1}"      => format(item.price), 
-                      "item_name_#{index+1}"   => item.name,
-                      "item_number_#{index+1}" => item.id,
-                      "quantity_#{index+1}"    => session[:cart][item.id.to_s]
-                    })
+  def create_order
+    current_order = Order.where(session_id:  session[:session_id].to_s)
+    if current_order.count == 1
+      count = 0
+      current_order[0].lineitems.each_with_index do |item, index|
+        item.destroy
+        count = index
+      end
+      current_order[0]
+    else
+      Order.create(status: 'pending payment', pst_rate: pst, gst_rate: gst, hst_rate: hst, session_id: session[:session_id].to_s)
     end
-    
+  end
+
+  def delete_order_session
+    current_order = Order.where(session_id:  session[:session_id].to_s)
+    current_order[0].session_id = ""
+  end
+
+  def complete_order
+    if params[:tx] == session[:session_id].to_s
+      session.delete(:cart)
+      flash[:notice] = "Your order was processed sucessfully!"
+    else
+      flash[:notice] = "Your order wasn't processed please try again!"
+    end
+  end
+
+  def populate_order
+    order = create_order
+    flash[:notice] = order.id
+    session[:cart].each do |item|
+      Lineitem.create(order_id: order.id, product_id: item[0].to_i, 
+                      quantity: item[1].to_i, price: Product.find(item[0].to_i).price)
+    end
+    order
+  end
+
+  def paypal_url(order)
+    return_url = 'http://localhost:3000/store/checkout/complete?tx=' + session[:session_id].to_s
+    values = {:business => 'drewlsvern@gmail.com', :cmd => '_cart',
+              :upload => 1, :return => return_url, :invoice => order.id}
+      values.merge!({ "amount_1"      => format(taxes + subtotal), 
+                      "item_name_1"   => 'Computer Geeks Order',
+                      "item_number_1" => 'Order ' + order.id.to_s,
+                      "quantity_1"    => 1
+                    })
     # For test transactions use this URL
     "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
    end

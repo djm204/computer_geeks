@@ -1,5 +1,5 @@
 %h2= "Details for product #{@product.name}"
 = render partial: 'shared/product',
-  object: @product, locals:{partial_name: 'shared/product_buttons'}
+  object: @product, locals:{partial_name: 'shared/buttons', button_name: 'Add to Cart'}
 %h3.back
   = link_to 'Back', session[:previous_url]

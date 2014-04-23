@@ -44,15 +44,15 @@
       - if @pst != 0
         %tr
           %td= 'PST:'
-          %td= "#{currency(@pst)}"
+          %td= "#{currency(@pst * @subtotal)}"
       - if @gst != 0
         %tr
           %td= 'GST:'
-          %td= "#{currency(@gst)}"
+          %td= "#{currency(@gst * @subtotal)}"
       - if @hst != 0
         %tr
           %td= 'HST:'
-          %td= "#{currency(@hst)}"
+          %td= "#{currency(@hst * @subtotal)}"
       %tr.grand_total
         %td= 'Grand Total'
         %td= currency(@taxes + @subtotal)
@@ -61,5 +61,6 @@
       = form_tag(payment_path) do
         = render partial: 'shared/buttons',
                  locals:{button_name: 'Make Payment' }
+      = link_to('Test', test_path)
       / - checkout = Checkout.new
       / = link_to('Make Payment', checkout.paypal_url('http://localhost:3000'), class: 'payment')

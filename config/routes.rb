@@ -1,7 +1,7 @@
 ComputerGeeks::Application.routes.draw do
 
-  get "store/search"
-  get "store/search_results"
+  # get "store/search"
+  # get "store/search_results"
   devise_for :users
   #root 'index#index'
 
@@ -27,6 +27,7 @@ ComputerGeeks::Application.routes.draw do
   delete '/store/cart/cart_session'   , to: 'store#delete_cart_session' , as: 'delete_cart_session'
   post   '/store/checkout'            , to: 'checkout#checkout'         , as: 'checkout'
   post   '/store/checkout/payment'    , to: 'checkout#payment'          , as: 'payment'
+  get    '/store/checkout/complete'   , to: 'checkout#complete_order'   , as: 'checkout_complete'
   
   #get   '/addresses'           , to: 'addresses#index'
   #get   '/addresses/:id/edit'  , to: 'addresses#edit'       , as: :address

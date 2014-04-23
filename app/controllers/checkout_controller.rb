@@ -36,7 +36,7 @@ class CheckoutController < ApplicationController
     products = load_cart
     subtotal = 0
     products.each do |product|
-      subtotal += session[:cart][product.id.to_s] * product.price.to_f
+      subtotal += session[:cart][product.id.to_i] * product.price.to_f
     end
     subtotal.to_f
   end
@@ -80,13 +80,17 @@ class CheckoutController < ApplicationController
   end
 
   def delete_order_session
-    current_order = Order.where(session_id:  session[:session_id].to_s)
-    current_order[0].session_id = ""
+    current_order = Order.where(session_id: session[:session_id].to_s)
+    current_order[0].session_id = ''
+    current_order[0].status = 'paid'
+    current_order[0].save
   end
 
-  def complete_order
+  def complete_checkout
     if params[:tx] == session[:session_id].to_s
+      Product.update_quantities(session[:cart])
       session.delete(:cart)
+      delete_order_session
       flash[:notice] = "Your order was processed sucessfully!"
     else
       flash[:notice] = "Your order wasn't processed please try again!"
@@ -109,7 +113,7 @@ class CheckoutController < ApplicationController
               :upload => 1, :return => return_url, :invoice => order.id}
       values.merge!({ "amount_1"      => format(taxes + subtotal), 
                       "item_name_1"   => 'Computer Geeks Order',
-                      "item_number_1" => 'Order ' + order.id.to_s,
+                      "item_number_1" => 'Order #' + order.id.to_s,
                       "quantity_1"    => 1
                     })
     # For test transactions use this URL

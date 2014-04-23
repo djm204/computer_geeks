@@ -27,7 +27,8 @@ ComputerGeeks::Application.routes.draw do
   delete '/store/cart/cart_session'   , to: 'store#delete_cart_session' , as: 'delete_cart_session'
   post   '/store/checkout'            , to: 'checkout#checkout'         , as: 'checkout'
   post   '/store/checkout/payment'    , to: 'checkout#payment'          , as: 'payment'
-  get    '/store/checkout/complete'   , to: 'checkout#complete_order'   , as: 'checkout_complete'
+  get    '/store/checkout/complete'   , to: 'checkout#complete_checkout', as: 'complete_checkout'
+  get    '/temp'                      , to: 'checkout#temp'
   
   #get   '/addresses'           , to: 'addresses#index'
   #get   '/addresses/:id/edit'  , to: 'addresses#edit'       , as: :address

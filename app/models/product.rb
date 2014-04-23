@@ -4,6 +4,10 @@ class Product < ActiveRecord::Base
   belongs_to :category
   mount_uploader :productImage, ProductImageUploader
 
+  validates_presence_of :category_id, :name, :description, :price, :stock_quantity
+  validates :stock_quantity, numericality: { only_integer: true }
+  validates :price, numericality: { greater_than_or_equal_to: 0 }
+
   def self.keyword_search(keywords)
     Product.where('name LIKE ? OR description LIKE ?', keywords(keywords), keywords(keywords))
   end
@@ -18,21 +22,20 @@ class Product < ActiveRecord::Base
     '%' + keywords + '%'
   end
 
-  # def paypal_url(return_url)
-  #   values = {
-  #   :business => 'drewlsvern@gmail.com',
-  #   :cmd => '_cart',
-  #   :upload => 1,
-  #   :return => return_url,
-  #   :invoice => '01TEST'
-  #   } 
-  #   values.merge!({ 
-  #     "amount_1" => subtotal,
-  #     "item_name_1" => user.first_name,
-  #     "item_number_1" => user.id,
-  #     "quantity_1" => '1'
-  #   })
-  #   # For test transactions use this URL
-  #   "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
-  #  end
+  def self.verify_product_quantity(id, qty)
+    product = Product.find(id)
+    if product.stock_quantity < qty.to_i
+      true
+    else
+      false
+    end
+  end
+
+  def self.update_quantities(session_cart)
+    products = Product.where(id: session_cart.keys)
+    products.each do |product|
+      product.stock_quantity -= session_cart[product.id]
+      product.save
+    end
+  end
 end

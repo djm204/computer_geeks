@@ -15,30 +15,28 @@ class StoreController < ApplicationController
     end
   end
 
-  def cart #runs on 'get' cart
-    if session[:cart].nil?
-      @product_id = params[:product_id]
-      @qty        = params[:qty]
-      if @product_id.nil? == false
-        session[:cart] = {@product_id => @qty.to_i}
-        load_cart
-      end
+  def cart
+    if params[:product_id] != nil && session[:cart].nil?   
+      session[:cart] = {params[:product_id].to_i => params[:qty].to_i}
+      load_cart
     else
       add_to_cart
     end
+    flash[:notice] = session[:session_id].to_s
   end
 
-  def add_to_cart # runs only on 'post'
-    @product_id = params[:product_id]
-    @qty        = params[:qty]
-     if @product_id.nil? == false
-       session[:cart][@product_id] = @qty.to_i
+  def add_to_cart
+     if params[:product_id] != nil
+       session[:cart][params[:product_id].to_i] = params[:qty].to_i    
      end
      load_cart
   end
 
   def load_cart
-    @products_in_cart = Product.where(id: session[:cart].keys).page(params[:page]).per(3)
+    if session[:cart] != nil
+      verify_product_quantity unless params[:product_id].nil?
+      @products_in_cart = Product.where(id: session[:cart].keys).page(params[:page]).per(3)
+    end
   end
 
   def delete_cart_session
@@ -47,9 +45,9 @@ class StoreController < ApplicationController
   end
 
   def remove_cart_item
-    product = Product.find(params[:id])
+    product = Product.find(params[:id].to_i)
     flash[:notice] = "Product #{product.name} was successfully removed from your cart!"
-    session[:cart].delete(params[:id])
+    session[:cart].delete(params[:id].to_i)
     check_session_status
   end
 
@@ -58,6 +56,14 @@ class StoreController < ApplicationController
       delete_cart_session
     else
       redirect_to cart_path
+    end
+  end
+
+  def verify_product_quantity
+    if Product.verify_product_quantity(params[:product_id].to_i,params[:qty].to_i)
+      flash[:alert] = "Quantity selected for product #{Product.find("#{params[:product_id]}").name} 
+                       is greater than our current stock, please adjust order quantity and try again!"
+      redirect_to session[:previous_url]
     end
   end
 end

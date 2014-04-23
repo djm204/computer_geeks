@@ -35,7 +35,7 @@
         %tr
           %td= product.name
           %td= product.description
-          %td= session[:cart][product.id.to_s]
+          %td= session[:cart][product.id.to_i]
           %td= currency(product.price.to_f)
     %table.total
       %tr
@@ -61,6 +61,5 @@
       = form_tag(payment_path) do
         = render partial: 'shared/buttons',
                  locals:{button_name: 'Make Payment' }
-      = link_to('Test', test_path)
       / - checkout = Checkout.new
       / = link_to('Make Payment', checkout.paypal_url('http://localhost:3000'), class: 'payment')

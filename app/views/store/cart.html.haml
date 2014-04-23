@@ -1,7 +1,8 @@
 %h2 Shopping Cart
 - if @products_in_cart.nil? == false
   = form_tag(checkout_path, class: 'cart_controls') do
-    = submit_tag 'Checkout'
+    - if alert.nil?
+      = submit_tag 'Checkout'
     = link_to 'Clear Cart', delete_cart_session_path, method: :delete,
           data: { confirm: 'Are you sure you want to remove all items from your cart?' }
   = paginate @products_in_cart

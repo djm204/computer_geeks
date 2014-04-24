@@ -11,20 +11,25 @@ class CheckoutController < ApplicationController
     user.addresses.find(user.default_bill)
   end
 
-	def checkout
+  def checkout
     @user = user
-    check_address_status(@user)
+    check_address_status
+  end
+
+  def calculate
     @subtotal = subtotal
     @pst = pst
     @gst = gst
     @hst = hst
     @taxes = taxes
-	end
+  end
 
-  def check_address_status(user)    
-    if @user.default_bill.nil? || @user.default_ship.nil?
+  def check_address_status
+    if user.default_bill.nil? || user.default_ship.nil?
       flash[:notice] = 'You must add an address before you can continue with checkout!'
       redirect_to addresses_path
+    else
+      calculate
     end
   end
 
@@ -98,7 +103,7 @@ class CheckoutController < ApplicationController
   end
 
   def populate_order
-    order = create_order    
+    order = create_order  
     session[:cart].each do |item|
       Lineitem.create(order_id: order.id, product_id: item[0].to_i,
                       quantity: item[1].to_i, price: Product.find(item[0].to_i).price)

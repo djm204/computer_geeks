@@ -38,4 +38,8 @@ class Product < ActiveRecord::Base
       product.save
     end
   end
+
+  def to_s
+    name
+  end
 end

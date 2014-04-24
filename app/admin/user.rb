@@ -33,6 +33,8 @@ ActiveAdmin.register User do
     f.inputs 'New User Details' do
       f.input :first_name
       f.input :last_name
+      f.input :default_ship, as: :select, collection: Address.where("user_id = " + user.id.to_s)
+      f.input :default_bill, as: :select, collection: Address.where("user_id = " + user.id.to_s)
       if f.object.new_record?
         f.input :password, label: 'Password:'
         f.input :password_confirmation, label: 'Password Confirmation:'

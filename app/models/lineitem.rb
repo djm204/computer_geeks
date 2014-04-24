@@ -8,4 +8,7 @@ class Lineitem < ActiveRecord::Base
   validates :quantity, numericality: { only_integer: true }
   validates :price, numericality: { greater_than_or_equal_to: 0 }
   
+  def to_s
+    "#{id} - #{Product.find(product_id)}"
+  end
 end

@@ -25,7 +25,7 @@
   .field
     = f.label :province_id
     %br/
-    = f.select(:province_id, Province.all)
+    = f.select(:province_id, options_from_collection_for_select(Province.all, 'id', 'name_to_s'))
   .field
     = f.label :postal_code
     %br/

@@ -6,9 +6,22 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all.page(params[:page]).per(5)
+    if params[:sort].nil?
+      @products = Product.all.page(params[:page]).per(5)
+    else
+      sort
+    end
   end
 
+  def sort
+    if params[:sort] == 'priceHL'
+      @products = Product.all.page(params[:page]).per(5).order(price: :desc)
+    end
+    if params[:sort] == 'priceLH'
+      @products = Product.all.page(params[:page]).per(5).order(price: :asc)
+    end
+  end
+  
   # GET /products/1
   # GET /products/1.json
   def show

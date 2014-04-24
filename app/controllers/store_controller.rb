@@ -6,18 +6,19 @@ class StoreController < ApplicationController
 
   def search_results
     if params[:search_mode] == '1'
-      @found_products = Product.keyword_search(params[:search_keywords]).page(params[:page]).per(3)
+      @found_products = Product.keyword_search(params[:search_keywords]).page(params[:page]).per(5)
     end
 
     if params[:search_mode] == '2'
       @found_products = Product.keyword_search_category(params[:search_keywords],
-                                                        params[:search_category]).page(params[:page]).per(3)
+                                                        params[:search_category]).page(params[:page]).per(5)
     end
   end
 
   def cart
-    if params[:product_id] != nil && session[:cart].nil?   
-      session[:cart] = {params[:product_id].to_i => params[:qty].to_i}
+    if params[:product_id] != nil && session[:cart].nil?
+      product_id = params[:product_id]
+      session[:cart] = {product_id.to_i => params[:qty].to_i}
       load_cart
     else
       add_to_cart
@@ -26,7 +27,8 @@ class StoreController < ApplicationController
 
   def add_to_cart
      if params[:product_id] != nil
-       session[:cart][params[:product_id].to_i] = params[:qty].to_i    
+       product_id = params[:product_id]
+       session[:cart][product_id.to_i] = params[:qty].to_i    
      end
      load_cart
   end
@@ -59,7 +61,8 @@ class StoreController < ApplicationController
   end
 
   def verify_product_quantity
-    if Product.verify_product_quantity(params[:product_id].to_i,params[:qty].to_i)
+    product_id = params[:product_id]
+    if Product.verify_product_quantity(product_id.to_i,params[:qty].to_i)
       flash[:alert] = "Quantity selected for product #{Product.find("#{params[:product_id]}").name} 
                        is greater than our current stock, please adjust order quantity and try again!"
       redirect_to session[:previous_url]

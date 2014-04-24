@@ -1,9 +1,28 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 h1
 {
   padding-top:20px;
+}
+.sort
+{
+  width:200px;
+  ul
+  {
+    list-style: none;
+    
+    li
+    {
+
+    }
+    li:first-child
+    {
+      font-size:14px;      
+    }
+  }
+  
 }
 .product
 {

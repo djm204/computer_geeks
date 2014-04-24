@@ -1,0 +1,53 @@
+%section.order
+  %h3 Delivery Information
+  %section.addresses
+    %section.address.bill_to
+      %h5 Billing Address 
+      %ul
+        %li= bill_address.address
+        %li= "#{bill_address.city}, #{bill_address.province.name}"
+        %li= bill_address.postal_code
+        %li= bill_address.country       
+    %section.address.ship_to
+      %h5 Shipping Address
+      %ul
+        %li= ship_address.address
+        %li= "#{ship_address.city}, #{ship_address.province.name}"
+        %li= ship_address.postal_code
+        %li= ship_address.country
+  %section.order_details
+    %h3 Order Details
+    %table
+      %thead
+        %tr
+          %th Product Name
+          %th Product Description          
+          %th Quantity
+          %th Price
+      -  lineitems(order.id).each do |item|
+        %tr
+          %td= item.product.name
+          %td= item.product.description
+          %td= item.quantity
+          %td= number_to_currency(item.product.price.to_f)
+    %table.total
+      %tr
+        %td= 'Sub-total: '
+        %td= "#{number_to_currency(subtotal(order.id))}"
+      - if pst != 0
+        %tr
+          %td= 'PST:'
+          %td= "#{number_to_currency(pst * subtotal(order.id))}"
+      - if gst != 0
+        %tr
+          %td= 'GST:'
+          %td= "#{number_to_currency(gst * subtotal(order.id))}"
+      - if hst != 0
+        %tr
+          %td= 'HST:'
+          %td= "#{number_to_currency(hst * subtotal(order.id))}"
+      %tr.grand_total
+        %td= 'Grand Total'
+        %td= number_to_currency((taxes(order) + 1) * subtotal(order.id))
+      %section.buttons
+        =link_to 'Test'

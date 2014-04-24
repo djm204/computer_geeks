@@ -1,6 +1,8 @@
 # encoding: UTF-8
 #
 ActiveAdmin.register Order do
+  scope :pending
+  scope :paid
   
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -15,13 +17,25 @@ ActiveAdmin.register Order do
   #  permitted
   # end
 
-  filter :status, as: :select, collection: [['paid'], ['payment pending']]
-  filter :user_id
-
    index do
     column "Order Id:", :id
+    column :status
     column "User", :user
-    column :status  
+    column "Total Products", :total_products do |order|
+      lineitems(order.id).count
+    end
+    column "Order Total", sortable: :amount do |order|
+      div class: :amount do
+        number_to_currency(calculate_order_total(order.id))
+      end
+    end
+    default_actions
+  end
+
+  show do
+    div do
+      render "show_orders"
+    end
   end
 
   form do |f|
@@ -38,5 +52,10 @@ ActiveAdmin.register Order do
 
   def format(amount)
     sprintf("%.2f",amount)
+  end
+
+  def calculate_order_amount
+    lineitems = Lineitem.find_by(order_id: :id)
+    lineitems.price.count 
   end
 end

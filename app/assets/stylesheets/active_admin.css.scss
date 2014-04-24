@@ -15,3 +15,78 @@
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+
+.amount
+{
+  text-align: right;
+}
+
+.orders
+{
+  width:600px;
+}
+
+#index_table_orders
+{
+  margin:0px auto;
+  width:800px;
+}
+#index_table_orders thead > tr > th
+{
+  text-align: center;
+}
+#index_table_orders > tbody > tr > td
+{
+  text-align: center;
+}
+
+.order
+{
+  margin:0px auto;
+  width:800px;
+  ul
+  {
+    list-style: none;
+  }
+  .addresses
+  { 
+     width:800px;
+    .bill_to
+    {
+      padding-right:100px;
+    }
+    .address
+    {
+      float:left;
+    }
+  }
+  .order_details
+  {
+    h3
+    {
+      clear:both;
+    }
+  }
+  .total
+  {
+    width:200px;
+    float:right;
+    
+    tr
+    {
+      td
+      {
+        text-align: right;
+        padding-right:17px;
+      }
+    }
+    .grand_total
+    {
+      border-top:2px solid #000;
+    }
+  }
+  .buttons
+  {
+    clear:both;    
+  }
+}

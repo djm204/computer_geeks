@@ -16,6 +16,9 @@
 //
 //   .status_tag { background: #6090DB; }
 
+$bkgd_color   : #F8F8F9;
+$border_color : #D0C3AD;
+
 .amount
 {
   text-align: right;
@@ -66,27 +69,44 @@
     {
       clear:both;
     }
-  }
-  .total
-  {
-    width:200px;
-    float:right;
-    
-    tr
+    table
     {
+      background-color: $bkgd_color;
+      border: 2px solid $border_color;
+      
+      tr:nth-child(2n+1)
+      {
+        background-color: #E1E1E1;
+      }
+      th
+      {
+        text-align: center;
+      }
       td
       {
+        text-align: center;
+      }
+      .price
+      {
         text-align: right;
-        padding-right:17px;
       }
     }
-    .grand_total
+    .total
     {
-      border-top:2px solid #000;
+      width:200px;
+      float:right;
+      
+      .grand_total
+      {
+        border-top:2px solid #000;
+      }
     }
   }
+  
   .buttons
   {
-    clear:both;    
+    clear:both;
+    text-align: center;
+    font-size:18px;
   }
 }

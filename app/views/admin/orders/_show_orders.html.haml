@@ -29,25 +29,25 @@
           %td= item.product.name
           %td= item.product.description
           %td= item.quantity
-          %td= number_to_currency(item.product.price.to_f)
+          %td.price= number_to_currency(item.product.price.to_f)
     %table.total
       %tr
         %td= 'Sub-total: '
-        %td= "#{number_to_currency(subtotal(order.id))}"
+        %td.price= "#{number_to_currency(subtotal(order.id))}"
       - if pst != 0
         %tr
           %td= 'PST:'
-          %td= "#{number_to_currency(pst * subtotal(order.id))}"
+          %td.price= "#{number_to_currency(pst * subtotal(order.id))}"
       - if gst != 0
         %tr
           %td= 'GST:'
-          %td= "#{number_to_currency(gst * subtotal(order.id))}"
+          %td.price= "#{number_to_currency(gst * subtotal(order.id))}"
       - if hst != 0
         %tr
           %td= 'HST:'
-          %td= "#{number_to_currency(hst * subtotal(order.id))}"
+          %td.price= "#{number_to_currency(hst * subtotal(order.id))}"
       %tr.grand_total
         %td= 'Grand Total'
-        %td= number_to_currency((taxes(order) + 1) * subtotal(order.id))
-      %section.buttons
-        =link_to 'Test'
+        %td.price= number_to_currency((taxes(order) + 1) * subtotal(order.id))
+    %section.buttons
+      =link_to 'Back', session[:previous_url]

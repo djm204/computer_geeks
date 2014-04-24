@@ -7,7 +7,7 @@
       - bill_address = @user.addresses.find(@user.default_bill)
       %ul
         %li= bill_address.address
-        %li= "#{bill_address.city}, #{bill_address.province}"
+        %li= "#{bill_address.city}, #{bill_address.province.name}"
         %li= bill_address.postal_code
         %li= bill_address.country           
     %section.address.ship_to
@@ -15,7 +15,7 @@
       - ship_address = @user.addresses.find(@user.default_ship)
       %ul
         %li= ship_address.address
-        %li= "#{ship_address.city}, #{ship_address.province}"
+        %li= "#{ship_address.city}, #{ship_address.province.name}"
         %li= ship_address.postal_code
         %li= ship_address.country
       %div.edit_address

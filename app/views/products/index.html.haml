@@ -1,9 +1,10 @@
 %h1 Products
 %nav.sort
   %ul
-    %li= 'Sort By Price'
-    %li= link_to 'Highest to Lowest', products_path + "?sort=priceHL"
-    %li= link_to 'Lowest to Highest', products_path + "?sort=priceLH"
+    %li= link_to 'Price: Highest to Lowest', "#{products_path}?sort=priceHL"
+    %li= link_to 'Price: Lowest to Highest', "#{products_path}?sort=priceLH"
+    %li= link_to 'Recently Updated', "#{products_path}?sort=recent"
+    %li= link_to 'On Sale', "#{products_path}?sort=featured"
 = paginate @products
 = render partial: 'shared/product',
   collection: @products, locals:{partial_name:'shared/buttons', button_name: 'Add to Cart' }

@@ -20,8 +20,16 @@ class ProductsController < ApplicationController
     if params[:sort] == 'priceLH'
       @products = Product.all.page(params[:page]).per(5).order(price: :asc)
     end
+    if params[:sort] == 'featured'
+      @products = Product.where('featured IS NOT NULL').page(params[:page]).per(5)
+    end
+    if params[:sort] == 'recent'
+      date = Date.today
+      @products = Product.where(updated_at: date.beginning_of_day..date.end_of_day)
+                                .page(params[:page]).per(5)
+    end
   end
-  
+
   # GET /products/1
   # GET /products/1.json
   def show
@@ -86,6 +94,6 @@ class ProductsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def product_params
-    params.require(:product).permit(:name, :description, :price, :stock_quantity, :productImage)
+    params.require(:product).permit(:name, :description, :price, :stock_quantity, :productImage, :featured)
   end
 end
